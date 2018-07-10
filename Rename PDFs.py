@@ -10,14 +10,14 @@ import pytesseract
 pytesseract.pytesseract.tesseract_cmd = 'Lib/site-packages/pytesseract/tesseract/tesseract'
 
 
-def CountPagesNumber(path):
-    pdfReader = PyPDF2.PdfFileReader(path)
+def CountPagesNumber(filePath):
+    pdfReader = PyPDF2.PdfFileReader(filePath)
     return pdfReader.numPages
 
 
-def isScannedFile(path):
-    text = textract.process(path)
-    pagesNumber = CountPagesNumber(path)
+def isScannedFile(filePath):
+    text = textract.process(filePath)
+    pagesNumber = CountPagesNumber(filePath)
     scannedFile = 0
     if text == '\x0c' * pagesNumber:
         scannedFile = 1
